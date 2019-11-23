@@ -1,5 +1,11 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -7,6 +13,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class jfBloqueioUrl extends JFrame {
 
@@ -44,9 +52,26 @@ public class jfBloqueioUrl extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(0, 0, 872, 543);
-		panel.add(textField);
-		textField.setColumns(10);
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(0, 0, 872, 543);
+		panel.add(textArea);
+		
+		try {
+			BufferedReader arquivo = new BufferedReader(new FileReader("C:/Users/r_jrs/Desktop/bloqueioSitesUrl.conf"));
+			//System.out.println("Arquivo aberto");
+			String str, txt="";
+			while((str = arquivo.readLine()) != null){
+				txt += str + "\n"; //Ele pega a linha coloca uma quebra de linha no final e "concatena" com o que já tem na variavel txt
+			}
+			textArea.setText(txt);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 	}
 }

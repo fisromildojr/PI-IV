@@ -17,6 +17,7 @@ public class jfPrincipal {
 	private jfBloqueioUrl bloqueioUrl;
 	private jfBloqueioPalavra bloqueioPalavra;
 	private jfBloqueioExtensao bloqueioExtensao;
+	private jfBloqueioHorario bloqueioHorario;
 
 	/**
 	 * Launch the application.
@@ -98,6 +99,12 @@ public class jfPrincipal {
 		jpPrincipal.add(lblBloqueioDeDownloads);
 		
 		JButton btnAdicionarHorrio = new JButton("Adicionar Hor\u00E1rio");
+		btnAdicionarHorrio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				bloqueioHorario = new jfBloqueioHorario();
+				bloqueioHorario.setVisible(true);
+			}
+		});
 		btnAdicionarHorrio.setBounds(249, 175, 151, 25);
 		jpPrincipal.add(btnAdicionarHorrio);
 		
