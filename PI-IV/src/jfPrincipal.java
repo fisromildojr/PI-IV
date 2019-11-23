@@ -49,6 +49,7 @@ public class jfPrincipal {
 		frmConfigurarSquid.setTitle("Configurar Squid");
 		frmConfigurarSquid.setBounds(100, 100, 430, 336);
 		frmConfigurarSquid.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmConfigurarSquid.setResizable(false);
 		
 		JPanel jpPrincipal = new JPanel();
 		frmConfigurarSquid.getContentPane().add(jpPrincipal, BorderLayout.CENTER);
