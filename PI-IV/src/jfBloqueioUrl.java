@@ -54,16 +54,26 @@ public class jfBloqueioUrl extends JFrame {
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(0, 0, 872, 543);
-		panel.add(textArea);
+		textArea.setEditable(true);
+		
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		scrollPane.setBounds(0, 0, 872, 543);
+		panel.add(scrollPane);
+		
+		//textArea.add(scrollPane);
+		//scrollPane.add(textArea);		
 		
 		try {
-			BufferedReader arquivo = new BufferedReader(new FileReader("C:/Users/r_jrs/Desktop/bloqueioSitesUrl.conf"));
+			BufferedReader arquivo = new BufferedReader(new FileReader("C:/Users/r_jrs/Desktop/squid.conf"));
 			//System.out.println("Arquivo aberto");
 			String str, txt="";
 			while((str = arquivo.readLine()) != null){
 				txt += str + "\n"; //Ele pega a linha coloca uma quebra de linha no final e "concatena" com o que já tem na variavel txt
 			}
 			textArea.setText(txt);
+			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+			//scrollPane.add(textArea);
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
