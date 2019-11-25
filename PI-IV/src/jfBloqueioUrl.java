@@ -92,7 +92,7 @@ public class jfBloqueioUrl extends JFrame {
 			JMenuBar menuBar = new JMenuBar();
 			scrollPane.setColumnHeaderView(menuBar);
 			
-			JButton btnCancelar = new JButton("Cancelar");
+			JButton btnCancelar = new JButton("Fechar");
 			btnCancelar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					dispose();
@@ -105,7 +105,6 @@ public class jfBloqueioUrl extends JFrame {
 					try {
 						BufferedWriter fileOut = new BufferedWriter(new FileWriter(file));
 						fileOut.append(textArea.getText());
-						btnCancelar.setText("Fechar");
 						JOptionPane.showMessageDialog(textArea, "Arquivo salvo com sucesso!");
 						fileOut.close();
 					} catch (IOException e1) {
