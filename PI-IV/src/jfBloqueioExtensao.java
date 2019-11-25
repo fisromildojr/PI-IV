@@ -45,6 +45,7 @@ public class jfBloqueioExtensao extends JFrame {
 	public jfBloqueioExtensao() {
 		setTitle("Lista de Extens\u00F5es");
 		setBounds(100, 100, 900, 600);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

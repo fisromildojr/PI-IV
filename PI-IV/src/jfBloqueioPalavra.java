@@ -45,6 +45,7 @@ public class jfBloqueioPalavra extends JFrame {
 	public jfBloqueioPalavra() {
 		setTitle("Lista de Palavras");
 		setBounds(100, 100, 900, 600);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
