@@ -43,6 +43,7 @@ public class jfBloqueioHorario extends JFrame {
 	public jfBloqueioHorario() {
 		setTitle("Bloqueio por Hor\u00E1rio");
 		setBounds(100, 100, 279, 336);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
