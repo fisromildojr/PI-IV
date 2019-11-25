@@ -1,11 +1,19 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
@@ -55,7 +63,8 @@ public class jfBloqueioPalavra extends JFrame {
 		panel.add(scrollPane);
 		
 		try {
-			BufferedReader arquivo = new BufferedReader(new FileReader("C:/Users/r_jrs/Desktop/squid.conf"));
+			File file = new File("C:/Users/r_jrs/Desktop/squid.conf");
+			BufferedReader arquivo = new BufferedReader(new FileReader(file));
 			//System.out.println("Arquivo aberto");
 			String str, txt="";
 			while((str = arquivo.readLine()) != null){
@@ -64,6 +73,35 @@ public class jfBloqueioPalavra extends JFrame {
 			textArea.setText(txt);
 			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 			scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+			//scrollPane.add(textArea);
+			
+			JMenuBar menuBar = new JMenuBar();
+			scrollPane.setColumnHeaderView(menuBar);
+			
+			JButton btnCancelar = new JButton("Cancelar");
+			btnCancelar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					dispose();
+				}
+			});
+			
+			JButton btnSalvar = new JButton("Salvar");
+			btnSalvar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						BufferedWriter fileOut = new BufferedWriter(new FileWriter(file));
+						fileOut.append(textArea.getText());
+						btnCancelar.setText("Fechar");
+						JOptionPane.showMessageDialog(textArea, "Arquivo salvo com sucesso!");
+						fileOut.close();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
+			menuBar.add(btnSalvar);
+			menuBar.add(btnCancelar);
 			//scrollPane.add(textArea);
 			
 		} catch (FileNotFoundException e) {
