@@ -3,6 +3,9 @@ import java.awt.Font;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -39,7 +42,7 @@ public class jfPrincipal {
 	private void initialize() {
 		this.frmConfigurarSquid = new JFrame();
 		this.frmConfigurarSquid.setTitle("Configurar Squid");
-		this.frmConfigurarSquid.setBounds(100, 100, 430, 336);
+		this.frmConfigurarSquid.setBounds(100, 100, 418, 361);
 		this.frmConfigurarSquid.setDefaultCloseOperation(3);
 		this.frmConfigurarSquid.setResizable(false);
 		JPanel jpPrincipal = new JPanel();
@@ -52,6 +55,7 @@ public class jfPrincipal {
 				jfPrincipal.this.bloqueioUrl.setVisible(true);
 			}
 		});
+		jpPrincipal.setLayout(null);
 		btnAdicionarUrl.setBounds(249, 78, 151, 25);
 		jpPrincipal.add(btnAdicionarUrl);
 		JButton btnAdicionarPalavra = new JButton("Adicionar Palavra");
@@ -98,5 +102,25 @@ public class jfPrincipal {
 		});
 		btnAdicionarExtenso.setBounds(249, 225, 151, 25);
 		jpPrincipal.add(btnAdicionarExtenso);
+
+		JButton btnReconfigurarSquid = new JButton("Reconfigurar Squid");
+		btnReconfigurarSquid.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Process p = Runtime.getRuntime().exec("ipconfig");
+					BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+					String lineOut;
+					while ((lineOut = input.readLine()) != null) {
+						System.out.println(lineOut);
+					}
+				}catch (IOException e) {
+					
+				}
+			
+			}
+		});
+		btnReconfigurarSquid.setBounds(12, 280, 388, 33);
+		jpPrincipal.add(btnReconfigurarSquid);
 	}
 }
