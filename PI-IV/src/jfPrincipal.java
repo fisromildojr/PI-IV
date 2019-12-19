@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 //Teste Romildo
@@ -110,12 +111,13 @@ public class jfPrincipal {
 					Process p = Runtime.getRuntime().exec("ipconfig");
 					BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
-					String lineOut;
+					String lineOut, msg="";
 					while ((lineOut = input.readLine()) != null) {
-						System.out.println(lineOut);
+						msg += lineOut+"\n";
 					}
+					JOptionPane.showMessageDialog(btnReconfigurarSquid, msg);;
 				}catch (IOException e) {
-					
+					JOptionPane.showMessageDialog(btnReconfigurarSquid, e.getMessage());
 				}
 			
 			}
