@@ -64,7 +64,7 @@ public class jfBloqueioExtensao extends JFrame {
 		panel.add(scrollPane);
 
 		try {
-			File file = new File("bloqueioExtensao.conf");
+			File file = new File("bloqueioExtensao.txt");
 
 			if (!file.exists()) {
 				file.createNewFile();

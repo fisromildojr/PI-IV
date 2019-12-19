@@ -64,7 +64,7 @@ public class jfBloqueioPalavra extends JFrame {
 		panel.add(scrollPane);
 
 		try {
-			File file = new File("bloqueioPalavra.conf");
+			File file = new File("bloqueioPalavra.txt");
 
 			if (!file.exists()) {
 				file.createNewFile();

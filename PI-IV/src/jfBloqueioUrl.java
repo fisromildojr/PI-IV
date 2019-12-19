@@ -69,7 +69,7 @@ public class jfBloqueioUrl extends JFrame {
 		// scrollPane.add(textArea);
 
 		try {
-			File file = new File("bloqueioUrl.conf");
+			File file = new File("bloqueioUrl.txt");
 
 			if (!file.exists()) {
 				file.createNewFile();
