@@ -1,3 +1,4 @@
+import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.LayoutManager;
@@ -6,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,8 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-//Teste Romildo
-//Cris
+import sun.awt.DesktopBrowse;
+
 public class jfPrincipal {
 	private JFrame frmConfigurarSquid;
 	private jfBloqueioUrl bloqueioUrl;
@@ -56,6 +58,7 @@ public class jfPrincipal {
 				jfPrincipal.this.bloqueioUrl.setVisible(true);
 			}
 		});
+		jpPrincipal.setLayout(null);
 		jpPrincipal.setLayout(null);
 		btnAdicionarUrl.setBounds(249, 78, 151, 25);
 		jpPrincipal.add(btnAdicionarUrl);
@@ -122,7 +125,24 @@ public class jfPrincipal {
 			
 			}
 		});
-		btnReconfigurarSquid.setBounds(12, 280, 388, 33);
+		btnReconfigurarSquid.setBounds(12, 280, 141, 33);
 		jpPrincipal.add(btnReconfigurarSquid);
+		
+		JButton btnAbrirSarg = new JButton("Abrir SARG");
+		btnAbrirSarg.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				URI url=;
+				if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+			        try {
+			            desktop.browse(url);
+			        } catch (Exception e) {
+			            e.printStackTrace();
+			        }
+			    }
+			}
+		});
+		btnAbrirSarg.setBounds(259, 280, 141, 33);
+		jpPrincipal.add(btnAbrirSarg);
 	}
 }
