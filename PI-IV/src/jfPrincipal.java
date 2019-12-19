@@ -133,7 +133,7 @@ public class jfPrincipal {
 		btnAbrirSarg.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-				
+				//abrindo o navegador
 				if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 			        try {
 			            desktop.browse(new java.net.URI("http://localhost/squid-reports"));
