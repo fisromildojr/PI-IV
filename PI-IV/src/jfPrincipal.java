@@ -61,6 +61,7 @@ public class jfPrincipal {
 		});
 		jpPrincipal.setLayout(null);
 		jpPrincipal.setLayout(null);
+		jpPrincipal.setLayout(null);
 		btnAdicionarUrl.setBounds(249, 78, 151, 25);
 		jpPrincipal.add(btnAdicionarUrl);
 		JButton btnAdicionarPalavra = new JButton("Adicionar Palavra");
@@ -112,21 +113,24 @@ public class jfPrincipal {
 		btnReconfigurarSquid.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					Process p = Runtime.getRuntime().exec("ipconfig");
+					Process p = Runtime.getRuntime().exec("squid -k reconfigure");
 					BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-
+					
+					/*
 					String lineOut, msg="";
 					while ((lineOut = input.readLine()) != null) {
 						msg += lineOut+"\n";
 					}
-					JOptionPane.showMessageDialog(btnReconfigurarSquid, msg);;
+					JOptionPane.showMessageDialog(btnReconfigurarSquid, msg);
+					*/
+					JOptionPane.showMessageDialog(btnReconfigurarSquid, "O Squid foi reconfigurado com sucesso!");
 				}catch (IOException e) {
 					JOptionPane.showMessageDialog(btnReconfigurarSquid, e.getMessage());
 				}
 			
 			}
 		});
-		btnReconfigurarSquid.setBounds(12, 280, 141, 33);
+		btnReconfigurarSquid.setBounds(12, 280, 181, 33);
 		jpPrincipal.add(btnReconfigurarSquid);
 		
 		JButton btnAbrirSarg = new JButton("Abrir SARG");
@@ -143,7 +147,7 @@ public class jfPrincipal {
 			    }
 			}
 		});
-		btnAbrirSarg.setBounds(259, 280, 141, 33);
+		btnAbrirSarg.setBounds(219, 280, 181, 33);
 		jpPrincipal.add(btnAbrirSarg);
 	}
 }
