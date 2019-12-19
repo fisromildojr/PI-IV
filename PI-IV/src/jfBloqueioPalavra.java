@@ -75,7 +75,7 @@ public class jfBloqueioPalavra extends JFrame {
 			String str, txt = "";
 			while ((str = arquivo.readLine()) != null) {
 				txt += str + "\n"; // Ele pega a linha coloca uma quebra de linha no final e "concatena" com o que
-									// já tem na variavel txt
+									// jï¿½ tem na variavel txt
 			}
 			textArea.setText(txt);
 			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -108,7 +108,7 @@ public class jfBloqueioPalavra extends JFrame {
 							//Escrita no squid.conf
 							File fileSquid = new File("/etc/squid/squid.conf");
 							BufferedReader squid = new BufferedReader(new FileReader(fileSquid));
-							String str, txt = "", strNovo="acl bloqueioPalavra url_regex -i 'bloqueioPalavra.txt' \nhttp_access deny bloqueioPalavra";
+							String str, txt = "", strNovo="acl bloqueioPalavra url_regex -i '/etc/squid/bloqueioPalavra.txt' \nhttp_access deny bloqueioPalavra";
 							while ((str = squid.readLine()) != null) {
 								if(!str.contains("#acl bloqueioPalavra")) {
 									txt += str + "\n";

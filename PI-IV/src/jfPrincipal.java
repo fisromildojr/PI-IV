@@ -7,16 +7,12 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URL;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import sun.awt.DesktopBrowse;
 
 public class jfPrincipal {
 	private JFrame frmConfigurarSquid;
@@ -140,7 +136,18 @@ public class jfPrincipal {
 				//abrindo o navegador
 				if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 			        try {
-			            desktop.browse(new java.net.URI("http://localhost/squid-reports"));
+			        	Process p = Runtime.getRuntime().exec("sarg");
+						BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+						
+						/*
+						String lineOut, msg="";
+						while ((lineOut = input.readLine()) != null) {
+							msg += lineOut+"\n";
+						}
+						JOptionPane.showMessageDialog(btnReconfigurarSquid, msg);
+						*/
+						//JOptionPane.showMessageDialog(btnReconfigurarSquid, "O Squid foi reconfigurado com sucesso!");
+						desktop.browse(new java.net.URI("http://localhost/squid-reports"));
 			        } catch (Exception e) {
 			            e.printStackTrace();
 			        }

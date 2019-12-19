@@ -80,7 +80,7 @@ public class jfBloqueioUrl extends JFrame {
 			String str, txt = "";
 			while ((str = arquivo.readLine()) != null) {
 				txt += str + "\n"; // Ele pega a linha coloca uma quebra de linha no final e "concatena" com o que
-									// já tem na variavel txt
+									// jï¿½ tem na variavel txt
 			}
 			arquivo.close(); // Fecha o arquivo depois de lido...
 			textArea.setText(txt);
@@ -112,7 +112,7 @@ public class jfBloqueioUrl extends JFrame {
 							//Escrita no squid.conf
 							File fileSquid = new File("/etc/squid/squid.conf");
 							BufferedReader squid = new BufferedReader(new FileReader(fileSquid));
-							String str, txt = "", strNovo="acl bloqueioUrl url_regex -i 'bloqueioUrl.txt' \nhttp_access deny bloqueioUrl";
+							String str, txt = "", strNovo="acl bloqueioUrl url_regex -i '/etc/squid/bloqueioUrl.txt' \nhttp_access deny bloqueioUrl";
 							while ((str = squid.readLine()) != null) {
 								if(!str.contains("#acl bloqueioUrl")) {
 									txt += str + "\n";

@@ -75,7 +75,7 @@ public class jfBloqueioExtensao extends JFrame {
 			String str, txt = "";
 			while ((str = arquivo.readLine()) != null) {
 				txt += str + "\n"; // Ele pega a linha coloca uma quebra de linha no final e "concatena" com o que
-									// já tem na variavel txt
+									// jï¿½ tem na variavel txt
 			}
 			textArea.setText(txt);
 			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -106,7 +106,7 @@ public class jfBloqueioExtensao extends JFrame {
 							//Escrita no squid.conf
 							File fileSquid = new File("/etc/squid/squid.conf");
 							BufferedReader squid = new BufferedReader(new FileReader(fileSquid));
-							String str, txt = "", strNovo="acl bloqueioExtensao urlpath_regex -i 'bloqueioExtensao.acl' \nhttp_access deny bloqueioExtensao";
+							String str, txt = "", strNovo="acl bloqueioExtensao urlpath_regex -i '/etc/squid/bloqueioExtensao.acl' \nhttp_access deny bloqueioExtensao";
 							while ((str = squid.readLine()) != null) {
 								if(!str.contains("#acl bloqueioExtensao")) {
 									txt += str + "\n";
