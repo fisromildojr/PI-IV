@@ -64,7 +64,7 @@ public class jfBloqueioPalavra extends JFrame {
 		panel.add(scrollPane);
 
 		try {
-			File file = new File("bloqueioPalavra.txt");
+			File file = new File("/etc/squid/bloqueioPalavra.txt");
 
 			if (!file.exists()) {
 				file.createNewFile();
@@ -106,7 +106,7 @@ public class jfBloqueioPalavra extends JFrame {
 							fileOut.close();
 							
 							//Escrita no squid.conf
-							File fileSquid = new File("squid.conf");
+							File fileSquid = new File("/etc/squid/squid.conf");
 							BufferedReader squid = new BufferedReader(new FileReader(fileSquid));
 							String str, txt = "", strNovo="acl bloqueioPalavra url_regex -i 'bloqueioPalavra.txt' \nhttp_access deny bloqueioPalavra";
 							while ((str = squid.readLine()) != null) {

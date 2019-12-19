@@ -69,7 +69,7 @@ public class jfBloqueioUrl extends JFrame {
 		// scrollPane.add(textArea);
 
 		try {
-			File file = new File("bloqueioUrl.txt");
+			File file = new File("/etc/squid/bloqueioUrl.txt");
 
 			if (!file.exists()) {
 				file.createNewFile();
@@ -110,7 +110,7 @@ public class jfBloqueioUrl extends JFrame {
 							fileOut.close();
 							
 							//Escrita no squid.conf
-							File fileSquid = new File("squid.conf");
+							File fileSquid = new File("/etc/squid/squid.conf");
 							BufferedReader squid = new BufferedReader(new FileReader(fileSquid));
 							String str, txt = "", strNovo="acl bloqueioUrl url_regex -i 'bloqueioUrl.txt' \nhttp_access deny bloqueioUrl";
 							while ((str = squid.readLine()) != null) {

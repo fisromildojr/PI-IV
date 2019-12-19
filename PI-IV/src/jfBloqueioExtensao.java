@@ -64,7 +64,7 @@ public class jfBloqueioExtensao extends JFrame {
 		panel.add(scrollPane);
 
 		try {
-			File file = new File("bloqueioExtensao.txt");
+			File file = new File("/etc/squid/bloqueioExtensao.acl");
 
 			if (!file.exists()) {
 				file.createNewFile();
@@ -104,9 +104,9 @@ public class jfBloqueioExtensao extends JFrame {
 							fileOut.close();
 							
 							//Escrita no squid.conf
-							File fileSquid = new File("squid.conf");
+							File fileSquid = new File("/etc/squid/squid.conf");
 							BufferedReader squid = new BufferedReader(new FileReader(fileSquid));
-							String str, txt = "", strNovo="acl bloqueioExtensao url_regex -i 'bloqueioExtensao.txt' \nhttp_access deny bloqueioExtensao";
+							String str, txt = "", strNovo="acl bloqueioExtensao urlpath_regex -i 'bloqueioExtensao.acl' \nhttp_access deny bloqueioExtensao";
 							while ((str = squid.readLine()) != null) {
 								if(!str.contains("#acl bloqueioExtensao")) {
 									txt += str + "\n";
