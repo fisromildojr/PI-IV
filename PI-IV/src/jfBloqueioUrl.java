@@ -101,10 +101,14 @@ public class jfBloqueioUrl extends JFrame {
 			btnSalvar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
-						BufferedWriter fileOut = new BufferedWriter(new FileWriter(file));
-						fileOut.append(textArea.getText());
-						JOptionPane.showMessageDialog(textArea, "Arquivo salvo com sucesso!");
-						fileOut.close();
+						if(textArea.getText().trim().length()==0) {
+							JOptionPane.showMessageDialog(textArea, "ERRO: Arquivo vazio!");
+						}else {
+							BufferedWriter fileOut = new BufferedWriter(new FileWriter(file));
+							fileOut.append(textArea.getText());
+							JOptionPane.showMessageDialog(textArea, "Arquivo salvo com sucesso!");
+							fileOut.close();
+						}
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
