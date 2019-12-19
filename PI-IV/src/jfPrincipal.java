@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
+import java.net.URL;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -132,10 +133,10 @@ public class jfPrincipal {
 		btnAbrirSarg.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-				URI url=;
+				
 				if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 			        try {
-			            desktop.browse(url);
+			            desktop.browse(new java.net.URI("http://localhost/squid-reports"));
 			        } catch (Exception e) {
 			            e.printStackTrace();
 			        }
