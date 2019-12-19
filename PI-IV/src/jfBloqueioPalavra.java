@@ -80,11 +80,12 @@ public class jfBloqueioPalavra extends JFrame {
 			textArea.setText(txt);
 			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 			scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+			arquivo.close();
 			// scrollPane.add(textArea);
 
 			JMenuBar menuBar = new JMenuBar();
 			scrollPane.setColumnHeaderView(menuBar);
-
+			
 			JButton btnCancelar = new JButton("Fechar");
 			btnCancelar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -103,6 +104,23 @@ public class jfBloqueioPalavra extends JFrame {
 							fileOut.append(textArea.getText());
 							JOptionPane.showMessageDialog(textArea, "Arquivo salvo com sucesso!");
 							fileOut.close();
+							
+							//Escrita no squid.conf
+							File fileSquid = new File("squid.conf");
+							BufferedReader squid = new BufferedReader(new FileReader(fileSquid));
+							String str, txt = "", strNovo="acl bloqueioPalavra url_regex -i 'bloqueioPalavra.txt' \nhttp_access deny bloqueioPalavra";
+							while ((str = squid.readLine()) != null) {
+								if(!str.contains("#acl bloqueioPalavra")) {
+									txt += str + "\n";
+								}else {
+									txt += strNovo + "\n";
+								}
+							}
+							BufferedWriter fileOutSquid = new BufferedWriter(new FileWriter(fileSquid));
+							fileOutSquid.append(txt);
+							fileOutSquid.close();
+							
+							
 						}
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block

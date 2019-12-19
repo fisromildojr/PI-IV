@@ -108,6 +108,23 @@ public class jfBloqueioUrl extends JFrame {
 							fileOut.append(textArea.getText());
 							JOptionPane.showMessageDialog(textArea, "Arquivo salvo com sucesso!");
 							fileOut.close();
+							
+							//Escrita no squid.conf
+							File fileSquid = new File("squid.conf");
+							BufferedReader squid = new BufferedReader(new FileReader(fileSquid));
+							String str, txt = "", strNovo="acl bloqueioUrl url_regex -i 'bloqueioUrl.txt' \nhttp_access deny bloqueioUrl";
+							while ((str = squid.readLine()) != null) {
+								if(!str.contains("#acl bloqueioUrl")) {
+									txt += str + "\n";
+								}else {
+									txt += strNovo + "\n";
+								}
+							}
+							BufferedWriter fileOutSquid = new BufferedWriter(new FileWriter(fileSquid));
+							fileOutSquid.append(txt);
+							fileOutSquid.close();
+							
+							
 						}
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
